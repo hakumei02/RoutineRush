@@ -1,0 +1,221 @@
+:root {
+  --bg-gradient: linear-gradient(135deg, #6a5acd, #8a2be2, #9370db);
+  --form-bg: rgba(255, 255, 255, 0.12);
+  --form-border: rgba(255, 255, 255, 0.2);
+  --input-bg: rgba(255, 255, 255, 0.92);
+  --text: #ffffff;
+  --text-secondary: #dcd0ff;
+  --accent: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+#root {
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg-gradient);
+  background-image:
+    radial-gradient(at 50% 0%, rgba(255,255,255,0.12) 0%, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(255,255,255,0.12) 0%, transparent 50%),
+    linear-gradient(to bottom, #5a4aae, #7b3fa8 40%, #8a2be2 100%);
+}
+
+.scene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Декоративные элементы фона */
+.mountains {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 42%;
+  background-image:
+    radial-gradient(circle at 50% 100%, #ffffff 0%, #9370db 80%),
+    radial-gradient(circle at 50% 100%, #ffffff 0%, #7b3fa8 80%),
+    radial-gradient(circle at 50% 100%, #ffffff 0%, #6a5acd 80%);
+  background-size: 220px 180px, 300px 240px, 400px 320px;
+  background-position: 10% top, 60% top, 85% top;
+  background-repeat: no-repeat;
+  filter: drop-shadow(0 10px 10px rgba(0,0,0,0.12));
+  z-index: 1;
+}
+
+.trees {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 28%;
+  background-image:
+    radial-gradient(circle at 50% 100%, #2f1e50 0%, #1a0f33 100%),
+    radial-gradient(circle at 50% 100%, #3a2565 0%, #221340 100%),
+    radial-gradient(circle at 50% 100%, #4a3080 0%, #2b1950 100%);
+  background-size: 60px 140px, 80px 160px, 50px 130px;
+  background-position: 12% bottom, 38% bottom, 72% bottom;
+  background-repeat: no-repeat;
+  z-index: 2;
+}
+
+.water {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 24%;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255,255,255,0.12) 0%, transparent 50%),
+    linear-gradient(to bottom, rgba(106,90,205,0.6), rgba(138,43,226,0.8));
+  background-size: 100% 100%, 100% 100%;
+  z-index: 3;
+}
+
+.sailboat {
+  position: absolute;
+  bottom: 14%;
+  right: 12%;
+  width: 60px;
+  height: 50px;
+  background:
+    radial-gradient(circle at 50% 0%, #ffffff 0%, #e0e0e0 100%),
+    radial-gradient(circle at 50% 0%, #ffffff 0%, #e0e0e0 100%);
+  background-size: 30px 40px, 20px 30px;
+  background-position: 15px 0, 35px 5px;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+  z-index: 4;
+}
+
+.login-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 380px;
+  padding: 36px;
+  background: var(--form-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--form-border);
+  border-radius: 16px;
+  box-shadow: 0 16px 32px rgba(0,0,0,0.24);
+  z-index: 10;
+}
+
+.login-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 28px;
+  letter-spacing: 0.5px;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px 16px 14px 42px;
+  background: var(--input-bg);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  color: #333;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.24s ease;
+}
+
+.input-group input:focus {
+  border-color: rgba(255,255,255,0.6);
+  box-shadow: 0 4px 12px rgba(255,255,255,0.12);
+}
+
+.input-icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #8a2be2;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  font-size: 13px;
+}
+
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.forgot {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.forgot:hover {
+  color: var(--accent);
+}
+
+.login-btn {
+  width: 100%;
+  padding: 14px;
+  background: var(--accent);
+  color: #4a008a;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform 0.12s, box-shadow 0.12s;
+}
+
+.login-btn:active {
+  transform: scale(0.98);
+}
+
+.register-link {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.register-link a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 420px) {
+  .login-card {
+    width: 92%;
+    padding: 28px;
+  }
+  .sailboat {
+    display: none;
+  }
+}

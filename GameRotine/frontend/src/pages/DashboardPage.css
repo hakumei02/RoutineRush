@@ -1,0 +1,417 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.main-page {
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #C7F3F6;
+}
+
+/* Шапка */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: #FEFDF9;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+}
+
+.app-header h1 {
+  font-size: 22px;
+  color: #000000;
+  font-weight: 600;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.header-buttons span {
+  font-size: 14px;
+  color: #000000;
+}
+
+.nav-btn {
+  padding: 8px 16px;
+  background: #A4C6E9;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.nav-btn:hover {
+  background: #5a4ab5;
+}
+
+/* Трекер прогресса */
+.progress-tracker {
+  background: #fff;
+  padding: 18px 24px;
+  margin: 20px 24px 0;
+  border-radius: 14px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.progress-tracker p {
+  font-size: 14px;
+  color: #7f8c8d;
+  margin-bottom: 6px;
+}
+
+.progress-bar-bg {
+  flex: 1;
+  height: 10px;
+  background: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 5px;
+  background: #FADCFE;
+  transition: width 0.4s ease;
+}
+
+.progress-stats {
+  display: flex;
+  gap: 20px;
+}
+
+.progress-stats div {
+  text-align: center;
+}
+
+.progress-stats span {
+  display: block;
+  font-size: 12px;
+  color: #95a5a6;
+}
+
+.progress-stats strong {
+  font-size: 20px;
+  color: #2c3e50;
+}
+
+/* Канбан-доска */
+.kanban-board {
+  display: flex;
+  gap: 20px;
+  padding: 20px 24px;
+  flex: 1;
+  overflow-x: auto;
+}
+
+.column {
+  flex: 1;
+  min-width: 280px;
+  border-radius: 12px;
+  padding: 16px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: background 0.2s;
+}
+
+.column.drag-over {
+  background: #f0e6ff;
+  border: 2px dashed #FADCFE;
+}
+
+.column h3 {
+  font-size: 15px;
+  color: #2c3e50;
+  font-weight: 600;
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.column-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.column-header h3 {
+  border-bottom: none;
+  padding-bottom: 0;
+  text-align: left;
+}
+
+.task-count {
+  font-size: 12px;
+  color: #95a5a6;
+  background: #f0f0f0;
+  padding: 2px 10px;
+  border-radius: 12px;
+}
+
+/* Пустое состояние */
+.empty-state {
+  text-align: center;
+  padding: 30px 10px;
+  color: #000000;
+}
+
+.empty-state .emoji {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.empty-state p {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.empty-state .add-hint {
+  font-size: 13px;
+  color: #000000;
+  font-weight: 600;
+}
+
+/* Добавление задачи */
+.add-task-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.add-task-input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #C7F3F6;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.add-task-input:focus {
+  border-color: #A4C6E9;
+}
+
+.add-task-btn {
+  padding: 10px 16px;
+  background: #A4C6E9;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.add-task-btn:hover {
+  background: #838BCC;
+}
+
+.add-task-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Карточка задачи */
+.task-card {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-left: 4px solid #FADCFE;
+  border-radius: 8px;
+  padding: 12px 14px;
+  cursor: grab;
+  transition: all 0.2s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  user-select: none;
+}
+
+.task-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.task-card.dragging {
+  opacity: 0.5;
+  transform: scale(0.98);
+}
+
+.task-card.completed {
+  border-left-color: #4caf50;
+  background: #f8fdf8;
+}
+
+.task-text {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.task-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-date {
+  font-size: 11px;
+  color: #aaa;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: #e74c3c;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.delete-btn:hover {
+  background: #ffeaea;
+}
+
+/* Достижения */
+.achievements-section {
+  padding: 0 24px 24px;
+}
+
+.achievements-section h2 {
+  font-size: 18px;
+  color: #2c3e50;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.achievement-card {
+  border-radius: 10px;
+  padding: 14px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: transform 0.2s;
+}
+
+.achievement-card:hover {
+  transform: translateY(-2px);
+}
+
+.achievement-card.unlocked {
+  background: #f0fdf4;
+  border: 1px solid #c8e6c9;
+}
+
+.achievement-card.locked {
+  background: #f9f9f9;
+  border: 1px solid #eee;
+}
+
+.achievement-icon {
+  font-size: 28px;
+  filter: grayscale(0);
+}
+
+.achievement-card.locked .achievement-icon {
+  filter: grayscale(1);
+  opacity: 0.4;
+}
+
+.achievement-info h4 {
+  font-size: 14px;
+  color: #2c3e50;
+  margin-bottom: 2px;
+}
+
+.achievement-info p {
+  font-size: 12px;
+  color: #95a5a6;
+}
+
+/* Уведомление */
+.notification {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #838BCC, #B8AEE3);
+  color: #fff;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(106, 90, 205, 0.4);
+  font-weight: 600;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: slideIn 0.3s ease-out;
+  max-width: 320px;
+}
+
+.notification .close-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  opacity: 0.7;
+  margin-left: 8px;
+}
+
+.notification .close-btn:hover {
+  opacity: 1;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Адаптив */
+@media (max-width: 900px) {
+  .kanban-board {
+    flex-direction: column;
+  }
+  .progress-tracker {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+}
